@@ -3,143 +3,148 @@ local MainFrame = Instance.new("Frame")
 local LeftPanel = Instance.new("Frame")
 local TabContainer = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
-local Icon = Instance.new("ImageLabel")
 local ContentFrame = Instance.new("Frame")
 local AuthOverlay = Instance.new("Frame")
 
-GX_HUB.Name = "GX_HUB"
+GX_HUB.Name = "GX_HUB_PRO_FIXED"
 GX_HUB.Parent = game:GetService("CoreGui")
 GX_HUB.ResetOnSpawn = false
 
 AuthOverlay.Name = "AuthOverlay"
 AuthOverlay.Parent = GX_HUB
-AuthOverlay.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+AuthOverlay.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+AuthOverlay.BackgroundTransparency = 0.1
 AuthOverlay.Size = UDim2.new(1, 0, 1, 0)
-AuthOverlay.ZIndex = 10
+AuthOverlay.ZIndex = 100
 
 local AuthBox = Instance.new("Frame")
-AuthBox.Size = UDim2.new(0, 300, 0, 200)
-AuthBox.Position = UDim2.new(0.5, -150, 0.5, -100)
-AuthBox.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+AuthBox.Size = UDim2.new(0, 320, 0, 190)
+AuthBox.Position = UDim2.new(0.5, -160, 0.5, -95)
+AuthBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 AuthBox.Parent = AuthOverlay
-Instance.new("UICorner", AuthBox)
-local Stroke = Instance.new("UIStroke", AuthBox)
-Stroke.Color = Color3.fromRGB(170, 0, 255)
-Stroke.Thickness = 2
+Instance.new("UICorner", AuthBox).CornerRadius = UDim.new(0, 14)
+local AuthStroke = Instance.new("UIStroke", AuthBox)
+AuthStroke.Color = Color3.fromRGB(170, 0, 255)
+AuthStroke.Thickness = 2
+
+local AuthTitle = Instance.new("TextLabel")
+AuthTitle.Size = UDim2.new(1, 0, 0, 45)
+AuthTitle.BackgroundTransparency = 1
+AuthTitle.Text = "GX HUB LOGIN"
+AuthTitle.TextColor3 = Color3.fromRGB(170, 0, 255)
+AuthTitle.Font = Enum.Font.GothamBold
+AuthTitle.TextSize = 20
+AuthTitle.Parent = AuthBox
 
 local PassInput = Instance.new("TextBox")
-PassInput.Size = UDim2.new(0.8, 0, 0, 40)
-PassInput.Position = UDim2.new(0.1, 0, 0.3, 0)
-PassInput.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-PassInput.PlaceholderText = "ENTER PASSWORD..."
+PassInput.Size = UDim2.new(0.82, 0, 0, 45)
+PassInput.Position = UDim2.new(0.09, 0, 0.33, 0)
+PassInput.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+PassInput.PlaceholderText = "ENTER KEY (GX999)"
 PassInput.Text = ""
 PassInput.TextColor3 = Color3.fromRGB(255, 255, 255)
+PassInput.Font = Enum.Font.Gotham
+PassInput.TextSize = 14
 PassInput.Parent = AuthBox
-Instance.new("UICorner", PassInput)
+Instance.new("UICorner", PassInput).CornerRadius = UDim.new(0, 10)
 
 local KeyBtn = Instance.new("TextButton")
-KeyBtn.Size = UDim2.new(0.8, 0, 0, 35)
-KeyBtn.Position = UDim2.new(0.1, 0, 0.6, 0)
-KeyBtn.BackgroundColor3 = Color3.fromRGB(100, 0, 200)
-KeyBtn.Text = "GET KEY (TELEGRAM)"
+KeyBtn.Size = UDim2.new(0.82, 0, 0, 38)
+KeyBtn.Position = UDim2.new(0.09, 0, 0.67, 0)
+KeyBtn.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+KeyBtn.Text = "GET KEY"
 KeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyBtn.Font = Enum.Font.GothamBold
+KeyBtn.TextSize = 14
 KeyBtn.Parent = AuthBox
-Instance.new("UICorner", KeyBtn)
-
-KeyBtn.MouseButton1Click:Connect(function()
-    setclipboard("https://t.me/+CNWsHkaEGAkxOWJl")
-end)
-
-PassInput:GetPropertyChangedSignal("Text"):Connect(function()
-    if PassInput.Text == "GX999" then
-        AuthOverlay.Visible = false
-    end
-end)
+Instance.new("UICorner", KeyBtn).CornerRadius = UDim.new(0, 10)
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = GX_HUB
-MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-MainFrame.Position = UDim2.new(0.3, 0, 0.3, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+MainFrame.Position = UDim2.new(0.5, -275, 0.5, -175)
 MainFrame.Size = UDim2.new(0, 550, 0, 350)
 MainFrame.Active = true
 MainFrame.Draggable = true
-Instance.new("UICorner", MainFrame)
+MainFrame.Visible = false
+Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 14)
 local MainStroke = Instance.new("UIStroke", MainFrame)
 MainStroke.Color = Color3.fromRGB(170, 0, 255)
+MainStroke.Thickness = 2
 
-LeftPanel.Size = UDim2.new(0, 150, 1, 0)
-LeftPanel.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+LeftPanel.Size = UDim2.new(0, 160, 1, 0)
+LeftPanel.BackgroundColor3 = Color3.fromRGB(12, 12, 12)
 LeftPanel.Parent = MainFrame
-Instance.new("UICorner", LeftPanel)
+Instance.new("UICorner", LeftPanel).CornerRadius = UDim.new(0, 14)
 
-Title.Size = UDim2.new(1, 0, 0, 50)
-Title.Text = "GX ULTIMATE"
+Title.Size = UDim2.new(1, 0, 0, 60)
+Title.BackgroundTransparency = 1
+Title.Text = "GX HUB"
 Title.TextColor3 = Color3.fromRGB(170, 0, 255)
 Title.Font = Enum.Font.GothamBold
-Title.TextSize = 18
+Title.TextSize = 22
 Title.Parent = LeftPanel
 
-Icon.Size = UDim2.new(0, 40, 0, 40)
-Icon.Position = UDim2.new(0.5, -20, 0.15, 0)
-Icon.Image = "rbxassetid://6031289129"
-Icon.BackgroundTransparency = 1
-Icon.Parent = LeftPanel
-
-TabContainer.Size = UDim2.new(1, 0, 0.6, 0)
-TabContainer.Position = UDim2.new(0, 0, 0.3, 0)
+TabContainer.Size = UDim2.new(1, 0, 0.7, 0)
+TabContainer.Position = UDim2.new(0, 0, 0.25, 0)
 TabContainer.BackgroundTransparency = 1
 TabContainer.Parent = LeftPanel
-local TabList = Instance.new("UIListLayout", TabContainer)
-TabList.Padding = UDim.new(0, 5)
+Instance.new("UIListLayout", TabContainer).Padding = UDim.new(0, 6)
 
-ContentFrame.Size = UDim2.new(0, 380, 0, 280)
-ContentFrame.Position = UDim2.new(0, 160, 0, 50)
-ContentFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ContentFrame.Size = UDim2.new(0, 370, 0, 280)
+ContentFrame.Position = UDim2.new(0, 170, 0, 55)
+ContentFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 ContentFrame.Parent = MainFrame
-Instance.new("UICorner", ContentFrame)
+Instance.new("UICorner", ContentFrame).CornerRadius = UDim.new(0, 12)
 
-local function createTab(name, id)
+local pages = {}
+local lp = game.Players.LocalPlayer
+
+local function createTab(name)
     local btn = Instance.new("TextButton")
-    btn.Size = UDim2.new(0.9, 0, 0, 35)
-    btn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    btn.Size = UDim2.new(0.9, 0, 0, 38)
+    btn.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     btn.Text = name
-    btn.TextColor3 = Color3.fromRGB(200, 200, 200)
-    btn.Font = Enum.Font.Gotham
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 14
     btn.Parent = TabContainer
-    Instance.new("UICorner", btn)
-    
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10)
+
     local page = Instance.new("ScrollingFrame")
     page.Size = UDim2.new(1, -20, 1, -20)
     page.Position = UDim2.new(0, 10, 0, 10)
     page.BackgroundTransparency = 1
     page.Visible = false
-    page.Name = name .. "Page"
+    page.CanvasSize = UDim2.new(0, 0, 0, 0)
+    page.ScrollBarThickness = 3
     page.Parent = ContentFrame
-    Instance.new("UIListLayout", page).Padding = UDim.new(0, 10)
+    local layout = Instance.new("UIListLayout", page)
+    layout.Padding = UDim.new(0, 10)
     
+    layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        page.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y + 20)
+    end)
+
+    pages[name] = page
     btn.MouseButton1Click:Connect(function()
-        for _, v in pairs(ContentFrame:GetChildren()) do
-            if v:IsA("ScrollingFrame") then v.Visible = false end
-        end
+        for _, p in pairs(pages) do p.Visible = false end
         page.Visible = true
     end)
-    
     return page
 end
 
-local ClassicPage = createTab("Classic Mod")
-local PowerPage = createTab("Get Power")
-local MovementPage = createTab("Other")
-
 local function addToggle(name, parent, callback)
     local btn = Instance.new("TextButton")
-    btn.Size = UDim2.new(0.95, 0, 0, 40)
-    btn.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    btn.Size = UDim2.new(0.95, 0, 0, 42)
+    btn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     btn.Text = name .. " : OFF"
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 14
     btn.Parent = parent
-    Instance.new("UICorner", btn)
-    
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10)
+
     local state = false
     btn.MouseButton1Click:Connect(function()
         state = not state
@@ -149,61 +154,51 @@ local function addToggle(name, parent, callback)
     end)
 end
 
-local function addButton(name, parent, callback)
-    local btn = Instance.new("TextButton")
-    btn.Size = UDim2.new(0.95, 0, 0, 40)
-    btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    btn.Text = name
-    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    btn.Parent = parent
-    Instance.new("UICorner", btn)
-    btn.MouseButton1Click:Connect(callback)
-end
+local MainTab = createTab("Main Menu")
+local PowerTab = createTab("Power")
+local MiscTab = createTab("Misc")
 
-addToggle("Fast Mode", ClassicPage, function(val)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val and 100 or 16
+local runService = game:GetService("RunService")
+local fastModeLoop
+addToggle("Fast Mode", MainTab, function(v)
+    if v then
+        fastModeLoop = runService.Heartbeat:Connect(function()
+            if lp.Character and lp.Character:FindFirstChild("Humanoid") then
+                lp.Character.Humanoid.WalkSpeed = 100
+            end
+        end)
+    else
+        if fastModeLoop then fastModeLoop:Disconnect() end
+        if lp.Character and lp.Character:FindFirstChild("Humanoid") then
+            lp.Character.Humanoid.WalkSpeed = 16
+        end
+    end
 end)
 
-addToggle("No Cooldown", ClassicPage, function(val)
-    _G.NoCD = val
+addToggle("No Cooldown", MainTab, function(v)
+    _G.NoCD = v
     local mt = getrawmetatable(game)
     setreadonly(mt, false)
     local old = mt.__namecall
     mt.__namecall = newcclosure(function(self, ...)
-        if _G.NoCD and getnamecallmethod() == "FireServer" then return end
+        if _G.NoCD and getnamecallmethod() == "FireServer" and (self.Name:lower():find("skill") or self.Name:lower():find("cooldown")) then
+            return
+        end
         return old(self, ...)
     end)
 end)
 
-addButton("Boost FPS", ClassicPage, function()
-    settings().Rendering.QualityLevel = 1
-    for _, v in pairs(game:GetDescendants()) do
-        if v:IsA("Part") then v.Material = Enum.Material.SmoothPlastic end
-    end
-end)
-
-addButton("Get Ten Shadows", PowerPage, function()
-    game:GetService("ReplicatedStorage").Remotes.Server.Spin:InvokeServer("Ten Shadows")
-end)
-
-addButton("Get Idle Transfiguration", PowerPage, function()
-    game:GetService("ReplicatedStorage").Remotes.Server.Spin:InvokeServer("Idle Transfiguration")
-end)
-
-addButton("Get Limitless", PowerPage, function()
-    game:GetService("ReplicatedStorage").Remotes.Server.Spin:InvokeServer("Limitless")
-end)
-
 local flying = false
-addToggle("Fly", MovementPage, function(val)
-    flying = val
-    local bv = Instance.new("BodyVelocity")
+local flySpeed = 50
+addToggle("Fly", MiscTab, function(v)
+    flying = v
     if flying then
-        bv.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local bv = Instance.new("BodyVelocity", lp.Character.HumanoidRootPart)
         bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+        bv.Name = "GX_Fly"
         task.spawn(function()
             while flying do
-                bv.Velocity = workspace.CurrentCamera.CFrame.LookVector * 100
+                bv.Velocity = workspace.CurrentCamera.CFrame.LookVector * flySpeed
                 task.wait()
             end
             bv:Destroy()
@@ -211,20 +206,29 @@ addToggle("Fly", MovementPage, function(val)
     end
 end)
 
-addToggle("Noclip", MovementPage, function(val)
-    game:GetService("RunService").Stepped:Connect(function()
-        if val and game.Players.LocalPlayer.Character then
-            for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                if v:IsA("BasePart") then v.CanCollide = false end
+local noclipConn
+addToggle("Noclip", MiscTab, function(v)
+    if v then
+        noclipConn = runService.Stepped:Connect(function()
+            if lp.Character then
+                for _, part in pairs(lp.Character:GetDescendants()) do
+                    if part:IsA("BasePart") then part.CanCollide = false end
+                end
             end
-        end
-    end)
+        end)
+    else
+        if noclipConn then noclipConn:Disconnect() end
+    end
 end)
 
-addToggle("Infinity Jump", MovementPage, function(val)
-    game:GetService("UserInputService").JumpRequest:Connect(function()
-        if val then game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping") end
-    end)
+PassInput:GetPropertyChangedSignal("Text"):Connect(function()
+    if PassInput.Text == "GX999" then
+        AuthOverlay:Destroy()
+        MainFrame.Visible = true
+        MainTab.Visible = true
+    end
 end)
 
-ClassicPage.Visible = true
+KeyBtn.MouseButton1Click:Connect(function()
+    setclipboard("https://t.me/+CNWsHkaEGAkxOWJl")
+end)
